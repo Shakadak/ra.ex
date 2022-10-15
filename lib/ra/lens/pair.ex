@@ -12,11 +12,12 @@ defmodule Ra.Lens.Pair do
 
       iex> use Ra.Data
       iex> use Ra.Optics
-      iex> Ra.Getter.view(_1(), {3, 4})
+      iex> use Ra.Operate
+      iex> view(_1(), {3, 4})
       3
-      iex> Ra.Setter.set(_1(), 0, {4, :a})
+      iex> set(_1(), 0, {4, :a})
       {0, :a}
-      iex> Ra.Setter.over(_1(), fn n -> n + 6 end, {4, :a})
+      iex> over(_1(), fn n -> n + 6 end, {4, :a})
       {10, :a}
   """
   def _1, do: fn strong -> fn pab -> first(pab, strong) end end
@@ -29,11 +30,12 @@ defmodule Ra.Lens.Pair do
 
       iex> use Ra.Data
       iex> use Ra.Optics
-      iex> Ra.Getter.view(_2(), {3, 4})
+      iex> use Ra.Operate
+      iex> view(_2(), {3, 4})
       4
-      iex> Ra.Setter.set(_2(), :b, {4, :a})
+      iex> set(_2(), :b, {4, :a})
       {4, :b}
-      iex> Ra.Setter.over(_2(), fn _ -> :b end, {4, :a})
+      iex> over(_2(), fn _ -> :b end, {4, :a})
       {4, :b}
   """
   def _2, do: fn strong -> fn pab -> second(pab, strong) end end

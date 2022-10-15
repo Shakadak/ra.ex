@@ -12,19 +12,20 @@ defmodule Ra.Prism.Either do
 
       iex> use Ra.Data
       iex> use Ra.Optics
-      iex> Ra.Prism.review(_Left(), 2)
+      iex> use Ra.Operate
+      iex> review(_Left(), 2)
       left(2)
-      iex> Ra.Setter.set(_Left(), 0, left(4))
+      iex> set(_Left(), 0, left(4))
       left(0)
-      iex> Ra.Setter.set(_Left(), 0, right(4))
+      iex> set(_Left(), 0, right(4))
       right(4)
-      iex> Ra.Setter.over(_Left(), fn n -> n + 6 end, left(4))
+      iex> over(_Left(), fn n -> n + 6 end, left(4))
       left(10)
-      iex> Ra.Setter.over(_Left(), fn n -> n + 6 end, right(4))
+      iex> over(_Left(), fn n -> n + 6 end, right(4))
       right(4)
-      iex> Ra.Prism.matching(_Left(), left(4))
+      iex> matching(_Left(), left(4))
       right(4)
-      iex> Ra.Prism.matching(_Left(), right(4))
+      iex> matching(_Left(), right(4))
       left(right(4))
   """
   def _Left, do: fn choice -> fn pab -> left(pab, choice) end end
@@ -37,19 +38,20 @@ defmodule Ra.Prism.Either do
 
       iex> use Ra.Data
       iex> use Ra.Optics
-      iex> Ra.Prism.review(_Right(), 2)
+      iex> use Ra.Operate
+      iex> review(_Right(), 2)
       right(2)
-      iex> Ra.Setter.set(_Right(), 0, right(4))
+      iex> set(_Right(), 0, right(4))
       right(0)
-      iex> Ra.Setter.set(_Right(), 0, left(4))
+      iex> set(_Right(), 0, left(4))
       left(4)
-      iex> Ra.Setter.over(_Right(), fn n -> n + 6 end, right(4))
+      iex> over(_Right(), fn n -> n + 6 end, right(4))
       right(10)
-      iex> Ra.Setter.over(_Right(), fn n -> n + 6 end, left(4))
+      iex> over(_Right(), fn n -> n + 6 end, left(4))
       left(4)
-      iex> Ra.Prism.matching(_Right(), right(4))
+      iex> matching(_Right(), right(4))
       right(4)
-      iex> Ra.Prism.matching(_Right(), left(4))
+      iex> matching(_Right(), left(4))
       left(left(4))
   """
   def _Right, do: fn choice -> fn pab -> right(pab, choice) end end

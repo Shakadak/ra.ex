@@ -1,4 +1,4 @@
-defmodule Ra.Setter do
+defmodule Ra.Setter.Operate do
   import Ra.Internal.Bag.Function, only: [const: 2]
 
   require Ra.Internal.Meta.Importer

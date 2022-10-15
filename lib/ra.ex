@@ -2,10 +2,11 @@ defmodule Ra do
   @doc """
   Compose a list of optics.
 
-      iex> import Ra.Lens.Pair, only: [_1: 0, _2: 0]
-      iex> Ra.Getter.view(Ra.compose(List.duplicate(_1(), 3)), {{{:ok, 3}, 2}, 1})
+      iex> use Ra.Optics
+      iex> use Ra.Operate
+      iex> view(compose(List.duplicate(_1(), 3)), {{{:ok, 3}, 2}, 1})
       :ok
-      iex> Ra.Getter.view(Ra.compose([_1(), _2()]), {{{:ok, 3}, 2}, 1})
+      iex> view(compose([_1(), _2()]), {{{:ok, 3}, 2}, 1})
       2
   """
   def compose([o]), do: o
