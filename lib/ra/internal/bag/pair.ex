@@ -1,4 +1,4 @@
-defmodule Ra.Internal.Bag.Tuple do
+defmodule Ra.Internal.Bag.Pair do
   @moduledoc false
 
   def fst({x, _}), do: x

@@ -5,8 +5,9 @@ defmodule Ra.Profunctor do
   #> May be later moved outside this library, please do not rely on it.
   #"""
 
-  alias Ra.Internal.Class
+  alias Ra.Internal.Meta.Class
   require Class
+
   @doc "dimap : (a' -> a) -> (b -> b') -> p a b -> p a' b'"
   Class.mk :dimap, 3
 
@@ -19,3 +20,16 @@ defmodule Ra.Profunctor do
     dimap(&id/1, b2c, pab, profunctor)
   end
 end
+
+defmodule Ra.Profunctor.Function do
+  @moduledoc false
+
+  def dimap(f, g, h) do
+    fn x -> g.(h.(f.(x))) end
+  end
+end
+
+#defmodule Monoidal.Function do
+#  def par(f, g), do: &Bag.cross(f, g, &1)
+#  def empty, do: &Bag.id/1
+#end

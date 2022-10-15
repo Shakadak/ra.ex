@@ -1,4 +1,8 @@
 defmodule Ra.Getter do
+
+  require Ra.Internal.Meta.Importer
+  Ra.Internal.Meta.Importer.mk_using()
+
   @doc """
   View the focus of a `Getter`.
       view :: forall s t a b. AGetter s t a b -> s -> a

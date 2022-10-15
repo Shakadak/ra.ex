@@ -1,4 +1,4 @@
-defmodule Ra.Internal.Class do
+defmodule Ra.Internal.Meta.Class do
   @moduledoc false
   #@moduledoc """
   #> #### Internal use only {: .warning}

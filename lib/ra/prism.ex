@@ -1,5 +1,8 @@
 defmodule Ra.Prism do
 
+  require Ra.Internal.Meta.Importer
+  Ra.Internal.Meta.Importer.mk_using()
+
   @doc """
   Create a `Prism` from a constructor and a matcher function that
   produces an `Either`:

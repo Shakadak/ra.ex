@@ -24,7 +24,7 @@ end
 defmodule Ra.Profunctor.Strong.Forget do
   @moduledoc false
   import Ra.Internal.Forget, only: [forget: 1]
-  import Ra.Internal.Bag.Tuple, only: [fst: 1, snd: 1]
+  import Ra.Internal.Bag.Pair, only: [fst: 1, snd: 1]
 
   def first(forget(z)), do: forget(&z.(fst(&1)))
   def second(forget(z)), do: forget(&z.(snd(&1)))

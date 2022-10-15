@@ -3,6 +3,9 @@ defmodule Ra.Iso do
   import Ra.Internal.Bag.Function, only: [id: 1]
   import Ra.Profunctor, only: [dimap: 4]
 
+  require Ra.Internal.Meta.Importer
+  Ra.Internal.Meta.Importer.mk_using()
+
   @doc """
   Create an Iso from a pair of morphisms.
       iso :: forall s t a b. (s -> a) -> (b -> t) -> Iso s t a b
