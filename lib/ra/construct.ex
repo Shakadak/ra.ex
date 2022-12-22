@@ -3,6 +3,8 @@ defmodule Ra.Construct do
     quote do
       use Ra.Prism.Construct
       use Ra.Getter.Construct
+
+      :constructible
     end
   end
 end

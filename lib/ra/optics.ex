@@ -4,6 +4,8 @@ defmodule Ra.Optics do
       use Ra.Lens.Pair
       use Ra.Prism.Maybe
       use Ra.Prism.Either
+
+      :visible
     end
   end
 end

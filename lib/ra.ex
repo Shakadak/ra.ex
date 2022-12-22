@@ -1,4 +1,22 @@
 defmodule Ra do
+
+  defmacro __using__(_opts) do
+    quote do
+      # The data types
+      use Ra.Data
+      # The optics to operate on them
+      use Ra.Optics
+      # The functions to use the optics
+      use Ra.Operate
+      # The function to create more optics
+      use Ra.Construct
+
+      import Ra
+
+      :shining
+    end
+  end
+
   @doc """
   Compose a list of optics.
 

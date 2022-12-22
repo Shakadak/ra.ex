@@ -24,9 +24,29 @@ defmodule Ra.Prism.Operate do
   matching :: forall s t a b. APrism s t a b -> s -> Either t a
   ```
   """
-  def matching(p, s) do
-    withPrism(p, fn _, f -> f.(s) end)
+  def matching(optic, data) do
+    withPrism(optic, fn _, f -> f.(data) end)
   end
+
+  @doc """
+  Ask if `preview prism` would produce a `Just`.
+  ```purescript
+  is :: forall s t a b r. HeytingAlgebra r => APrism s t a b -> s -> r
+  ```
+  """
+  def is(optic, data) do
+    import Ra.Internal.Bag.Either, only: [either: 3]
+    import Ra.Internal.Bag.Function, only: [const: 2]
+    either(&const(false, &1), &const(true, &1), matching(optic, data))
+  end
+
+  @doc """
+  Ask if `preview prism` would produce a `Nothing`.
+  ```purescript
+  isn't :: forall s t a b r. HeytingAlgebra r => APrism s t a b -> s -> r
+  ```
+  """
+  def isn_t(optic, data), do: not is(optic, data)
 
   @doc """
   Create the "whole" corresponding to a specific "part":
